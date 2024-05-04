@@ -1,11 +1,12 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Hexo</title>
-    <meta name="author" content="John Doe" />
-    <meta name="description" content="" />
+    <title>云散·飞花</title>
+    <meta name="author" content="云散·飞花" />
+    <meta name="description" content="但行善举 莫问前程" />
     <meta name="keywords" content="" />
     <meta
         name="viewport"
@@ -52,7 +53,7 @@
         <transition name="fade">
             <div id="loading" v-show="loading">
                 <div id="loading-circle">
-                    <h2>LOADING······</h2>
+                    <h2>LOADING</h2>
                     <p>加载过慢请开启缓存 浏览器默认开启</p>
                     <img src="/images/loading.gif" />
                 </div>
@@ -61,7 +62,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
-            <span>HEXO</span>
+            <span>云散·飞花</span>
         </a>
         
         <a href="/">
@@ -93,7 +94,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;HEXO</span>
+            <span>&emsp;云散·飞花</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -167,7 +168,7 @@
             <div class="wrap">
                 <h1>云散·飞花</h1>
                 <h3></h3>
-                <h5></h5>
+                <h5>但行善举 莫问前程</h5>
             </div>
         </span>
     </div>
@@ -190,7 +191,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/5/4
+            2024/5/2
         </span>
         
         
@@ -230,7 +231,7 @@
         <div class="avatar">
             <img src="/images/avatar.jpg" alt="avatar" />
         </div>
-        <div class="name">John Doe</div>
+        <div class="name">云散·飞花</div>
         <div class="description">
             <p>Description<br>…</p>
 
@@ -256,11 +257,11 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2024 云
+            2022 - 2024 云散·飞花
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;John Doe
+            &commat;云散·飞花
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
@@ -281,5 +282,10 @@
     </div>
     <script src="/js/main.js"></script>
     
+	<!--浏览器搞笑标题-->
+	<script type="text/javascript" src="/source/js/FunnyTitle.js"></script>
+	<!--单击显示文字-->
+	<script type="text/javascript" src="/source/js/click_show_text.js"></script>
+	<script src="/source/js/click_show_text.js"></script>
 </body>
 </html>
