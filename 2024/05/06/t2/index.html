@@ -40,6 +40,9 @@
 <script src="/js/lib/preview.js"></script>
 
 
+<script src="https://s4.zstatic.net/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+<script src="/js/lib/crypto.js"></script>
+
 
 
 
@@ -72,7 +75,7 @@
             <span>&ensp;主页</span>
         </a>
         
-        <a href="/about">
+        <a href="/id-card">
             <i class="fa-solid fa-id-card fa-fw"></i>
             <span>&ensp;名片</span>
         </a>
@@ -110,7 +113,7 @@
                     </div>
                 </a>
                 
-                <a href="/about">
+                <a href="/id-card">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
@@ -167,23 +170,57 @@
             2024/5/6
         </span>
         
+        <span class="category">
+            <a href="/categories/%E6%97%A5%E5%B8%B8/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                日常
+            </a>
+        </span>
+        
+        
+
+		
+
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%BC%80%E5%BF%83/" style="color: #00bcd4">
+                    开心
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #ffa2c4">
+                    功能
+                </a>
+            </span>
+            
+        </span>
         
     </div>
     
-    <div class="content" v-pre>
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="95f97ad7733b9b5a27658da3dd36bc29c2a1e8d43a11ef7a9ebad57001e9f52e">1b693c4938223286468132b2f7068bf629c649d9d1ed7de8dcc00945be09309374cd5a82a778875e57c04b3ebe8fec81c36238b536e8253670b5ccc4a5dfd681879390a86e2eefd84abac9257f9eac5096d28c5781505f613949da76c852f43876d74e71e31f29ca03546ba0a8b27bba9c34544071dafcd4afac052b671da2fd50769f49b5d9cb9fafe93e8390449d0c7154ddf36f40b4eb4c2feb96144388eb49c8d8459df4b0016490879d5055af398f6b1219020ddaf9a9eb070c3f6ecc9576fbbc6ae981685ac2ac243cdcbba97b06521ca27834c3c6a2837d58846b82eec27a1d10f676f1b09a4d8c56ee50cbf31e0aec02a68449f341cfbb044842813d5e8f3e5c591b6c8f41f446f06891f8a3f194bcacd4fa4887f1221d274f7426dd6723c962f760c2dd2243d9d2399b29c2ca1dcd047781a66878fb8a1bef9ad9b0f7d19f881f9a4804c7caa1e6084c94d890a4c64f5d44f39eb06c55f972451253a772ac959d0374e80fc1ed176b603a8b7f24918ae926212688c5360130186b5783e4181c5f7ba54dbef1750ec134a76bd0de3448d60b1b21a0d7e8b408055d8d529fe092cfdaa174fd631cd439ae33a9e816321bc8d6e9f8c3ad0c4989c6e165e9f7892f44f2ef18ef3d988e96773bb580178d388ffff699d61202d34f27d642ad04dd287f21a8a6cc6b720a293bf39f74d25509638019be5d789cee1b6e8daee5d3d17df88979cd6020f6ba08bad3f165761683d9636786c364b817e2057d4d2f0af0ec1e680f11703b212de69e46e9192f1b58d826fe97fa42a6b0095988d13547e14db2eab4b85967f211dff8f1fdca5823d3ef91c7e43fff5c8e5f41306ff7ac6a6c25c97196dfde09e9a88b08a2dd2855423a21aaae29d25fd0a611cb7a3d070f2372c83bb967e58cbe2304c039a55ebc50566a7305966a5d488faa651727b00fc1473dde20b7044043b497b586555b1946c5d3909fb867951aa80bea666357ec06bc58b4e2483dd9559972cc3708c737b7113af23191a5f0d4998a0b8f672f9d7672e4d1103adbaa49580bb1ac78ca371f4560ea9d8d3c6f43fa5dae0c38bec7ad428ca5b168fb4b232563acaae1e08e867ef20c6de66f2fc55653146dc8781d71a51edb8098c4fc6ea0f9e12a</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入访问密码( ^ω^)</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
-    </div>
+    
+    <input
+        id="crypto"
+        :class="['input', cryptoStatus]"
+        :disabled="cryptoStatus === 'success'"
+        ref="crypto"
+        placeholder="文章被加密，请输入密码"
+        data-encrypted="U2FsdGVkX1+HXeX/QIamDKnEYsWJweksGYr9QSXeOp9W/LyC3RiMq05Yg558KSgr8jQmx1Xgt/s51OZG+ocKpk6/acL9BUhmfsVRjFLE8bYOB8j4HcqMK4wqbplZ0HzFYIrZTLGjs/Bp8iJT5V+iu1+rsV0CtbK56jiV8xARpMahhMeTd13Dy3HMVM7N3ZMTsn7qPBzDbHEbX8t/c3AUt8/6YxFBHIuymMmVIgXjjpeDfcc8lHjdN89vTEPIOgUOastdYL4HMrQr16T9vzhHHBfwa4DOKDn2r5VAJPC/ON+gCjEyZDJLoTMVf/2/POpD76vgEYHaKCDXVzUbV3avXyVy3F6eT4shBH9M9ZxblNltQmWdOJrRMgRl/SGYKY/zyb5sEjzyr4AxDyR43Oy0NAUmFt8oRyPJJx73Vew84xhhnt1RYZ7zEa+4tErv66T/bDCZSQ+JXT7QQFwGP3CYhMbxnXp9BAx6nElcueNSW7LngT/blzfb9xFXWD/2JRMOZSnEanZG/eSZ902x3CGPcBuOmlSogAdf5yShRDe33pyUHB1x5jynAh30YEPEWNeIrY+Zx/XjB7uNTZ89HzB66hDrlc78RxUVx9YNp2AZM/Nyy9lfnb9DAvM1BAQm4EuuBuzP//XUA9dd4AA/MCdTLZ+3TVtbPi0jXG10+YYMWEBPbE4rR/kUxbPJAIfOXLxzX35Elt9vcV6DZFn6M9UA5NIO6VIWA8aHOmqtmfSaJ6rowecszCmzhYo0xGwZk3bNO8Y6CapAgAm6NZejBG4DPj0+XJa85xJ5jQwF8vwsooLnVLtFdu3QoaVinOlxLRnnoShiM1ZDSjue6qNL1rbCVgDR2L28Wd5Zcc2OUldR6WCzZIy6d/Y2G7kPsN2KHuBnJOv3lbN64XB2FVrjxbNgtzMxggw1ViWnd/jAR9Dy6neP3+28i86z/AiPB5TRYtLNEvzAbhtk8x+egnmyvt/YGaaO07tCYfeFt6xcTtngnquuVq+YkTjNPb398LMByVUr4J3vfzITLm/PrhijeposqeA+pwxhbOUH4iFtGyTE6C5qpIB+PcO7/1RRQHyM7wu7Z/oxN+p93fRORAHvNDW2VJWX1aF5vv7piHMTKA6qZx2pWEwyQ0oH1D9YrfmsLFG/n6EKcskhumahrzHD6G7YJDt1EVNmKKVTKWza6Uq6sYp7QWGRsU6AEOdAt1GsT+Q56d+TLFRQRBzO9sazYHIHetFJ14Swzzlbgyk/vao/STLENwprP+Eq8o/MDt+ow7Y6bq7ZXsLRTnP+pfw7ehMuocneq3GseCY70GqQvHNfq+KCicaqo/llxQAm4XI71I4uoMu/tn0bSp+fMPLXw1qrJgMFVA8H8xJ028b9T/lBsrmc90cOdmgg+AeIU2JLlxtds5KKwSQj3QMQ+YEwVocGESFnj4KEUnZEKpxz0O6oHrhqaVAgjsukUdWOZRBfJhdB5rHenzyqzyCUWNitQMMBPfxjjbFuECAQsjqREdY3HyB/TCwHc+scV2wvq6NCuSply+WpFXnbilRVPnhpyXIY/8axr0ib93OvTt95hLWN1O1J+NgHpQxeK4l1U/UYerEqpWx7H8dr/n+GAQjjFRma3+6XrpLG5tRO+VDxwVfQiGzoUy/r0apxE7mpPjaphWIa40QOSseHIHHhoZKi+5R21Q=="
+        data-shasum="5d1ac149dda4e497f5b8dbd08ec5306d71d70a5b304b255d2db7cdafa9415c9f"
+        v-model="crypto"
+    />
+    <transition name="fade">
+        <div class="content" ref="content" v-show="cryptoStatus === 'success'"></div>
+    </transition>
     
     
     
@@ -197,7 +234,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2024 云散·飞花
+            2023 - 2024 云散·飞花
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
