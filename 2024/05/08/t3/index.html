@@ -36,6 +36,11 @@
 <script src="/js/lib/highlight.js"></script>
 
 
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
 
 <script src="/js/lib/preview.js"></script>
 
@@ -77,12 +82,12 @@
         
         <a href="/id-card">
             <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;名片</span>
+            <span>&ensp;资料</span>
         </a>
         
         <a href="/archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;档案</span>
+            <span>&ensp;存档</span>
         </a>
         
         <a href="/categories">
@@ -118,7 +123,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">名片</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">资料</div>
                     </div>
                 </a>
                 
@@ -127,7 +132,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">档案</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">存档</div>
                     </div>
                 </a>
                 
@@ -191,14 +196,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%8E%9F%E7%A5%9E/" style="color: #00bcd4">
+                <a href="/tags/%E5%8E%9F%E7%A5%9E/" style="color: #ffa2c4">
                     原神
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%B4%A9%E9%93%81/" style="color: #00a596">
+                <a href="/tags/%E5%B4%A9%E9%93%81/" style="color: #00bcd4">
                     崩铁
                 </a>
             </span>
@@ -213,8 +218,8 @@
         :class="['input', cryptoStatus]"
         :disabled="cryptoStatus === 'success'"
         ref="crypto"
-        placeholder="文章被加密，请输入密码"
-        data-encrypted="U2FsdGVkX192Ur67mdc5uN22Hybsbe+hugjPzHaMJB3CvyYyazalKX+UohP18DjesZ5Xzagx0OTqed1Fas93SnC2IVI37X5GkR2iseL/+xW4A3katjkcyMeAfnRJ9+nYQ9xOdkdh7ZQT1RPY5ietnI12HdReRCxdFn6WTl5QFcXepIRRm3H+q3/+ofFEMDCwEDQcsxi4zC1QHDDxAdcJZVXzMAKtp1fXs4TvFAU6vC+CyzT76BTTlUEPAPx8h7u4dvPoaCcZrwSaOHeQ0gdpIvaNUioNA2ZijFH6LOXJJquBL2PtXVC8iAEeD36oNk7iM7Bo52wcua1ayQSRIcoWsx1yfwZPHJCTLbGq9hd5rc6xl5cbpPrQAW3CCcmlwmQKtoicjxzr7C8Gew+u+bnM3ZPH0fpoUNuK1/6T3YnBOHSDYnMbfrECR93l+o2eu9BkvH2U5F3Kyqaj+RkenT83HkpRgdihlAHfSXSofAs3ohx19WliKh35gCFHyuSA3/Vk4RMU3J30H/Boing0jJWr4RX8znqyydDP1+m62b5Txsg7KsEdLeWB1IyghRshBd1gYvzQ29NiE6AsQcvHCxa8zvOkOW6FkmWDVrPVL2OiC5WAbFZZRx34IuHIPRpROp3BzDQenc0J6F+XBOR42l/50BG/uMgg5kOWcLIebgGx/1ZdWfhJh0eaFAj4Sc5LJ2Pg7HMfiZTbhdH6A00JCIQSEApYYQAE7fyruZyuBuNIYBnNXJH/FEKfhDBu6P8p/vOKkcOO50X4DyG9ichjiwSGx1uFWMJnbeoqhpQJEoqK/PQ0ss85PsRj+WrqOJCoOcyhjghytVc2uS+eeY8f7BOsX5gWHdhPTyhBlhEaPmlhdQFNOXyHePMwwIFwVQ2US4BSlmyKUiPIp9+L8j3Fuzck+7skEXhIW/M1LB5+PCfiVJLUaKruNTg2c7qtfF29lT4gDcO0wM6USPNFbWO1K7pBu6Yvr2bfGVmhtLj56NWCTTU="
+        placeholder="Σ(ﾟдﾟ)好像看不了哦 输入密码试试吧"
+        data-encrypted="U2FsdGVkX1+l2L4X7XVEy6CLo84oqL8aqG8unV41BYL/xx7CCh6SVxRG9kQnEvr7rzKyPTkzj7MpOItJ0Xoz4xOY+q4QPaoveOqa4nm+VGaq2yrXqbOSVS8xAY+ZC7RS7c0Kjk37rlp4hBw9EmKxv61Y/Wh9CY07eiQNNBjyeOlWdlNGeYjFizSI4iqPo6avfc9oqRc/zxxQhKXEtAB/PEijP7oMCqzWEaTGwQUQsFsnqyWHKWYaQsEGoDRKsVq+Dez/zT0IcPR2DhIJgWALHE49UXd4dgLPFr31xwq6+nkkvIl5zocF/7d2coglPrlioZ8JBuQWaGsfa2JjupUucSNIN8gEsUoifH7p6mrtpEqP0kTDl58ueCKwnNbW9qADizR23YlCIBViEs4k7R18sF/Ii6pCqsaaiJZ30f2JN3wSl2+nZhnaTwWyjVuvExqCbayVozXLvbrgTuFqROPGYn9Goduoyh1YplU/wQNIjy+nngOKJ/uN0gK9Vnoqh9Wzw7f9Jqav6ziFFeLb6A9spMO0QIkQTrHNe0slHcbKjtfd3Cd4tfg+tf+TPZdFZG7FzUkS0pk49qZIAFj1HJXYw32GMZ4Bhr/RY4BYt/kdD3cr1XCJtlNt6opnEdMFtIMnFjAw1x8HIE4I8SKzw3KauGAEFfzhd0whO6MlgN59cJhk2YLdbO6Cy60rgW+jv6cQ/kv3uLTxtoTmKBhsGtA/m/tiuODK1Mej8mVebBnWiyhvB/0SgUNGgQ8V9cK1oZtZSSLOcANMJCpJBkaULaOIQ2sWT8cikNhJsBPyF1Fz7knUEJM17sy+ApsiB0XvZbasy4nNLoQ8I+ucj49FMDhvHQFGxloSAwVKAUXFrCdDXARtEuymdJeChmuYdzf9IZTPB9j5cH4dQU7CzxflB6kKKCPaOIjftq9h92YMAHM5B10l2xTZ7oO2DrK+tEQaVqeXxKstEhx7C2ad8R08LgQontO5yKViHMMOwQiDoamiX8g="
         data-shasum="63aa9fff655428ce3980b20b71373b6860963a1a5eba9a5771af60f9f01e75cb"
         v-model="crypto"
     />
@@ -234,17 +239,48 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2024 云散·飞花
+            2023 - 2024云散·飞花
             <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
+                <i class="fa-regular fa-flag fa-flip"></i>
             </span>
             &commat;云散·飞花
+            <i class="fa-solid fa-fish fa-bounce"  style="color:#87BFF2;"></i> 
         </div>
         <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            Based on the <a href="#">Hexo Engine</a></a> &amp;
             <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
         </div>
         
+        
+              <!-- 建站时长 -->
+              <span id="sitetime"></span> <!--显示建站时间的地方放置此代码 可以加上其他代HTML代码加粗颜色等-->
+    <script language=javascript>
+        function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            var t1 = Date.UTC(2024,5,2,20,46,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="Luck-clouds 时光之河流淌了"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+</script>
     </div>
 </footer>
 
@@ -257,15 +293,12 @@
         </transition>
         
     </div>
-	<!--头像旋转特效
-	<div class="avatar">  
-    <img src="/js/images/avatar.jpg">  
-	</div>-->
     <script src="/js/main.js"></script>
-	<!--动态线条背景-->
-	<script type="text/javascript"
-	color="0,191,255" opacity='0.7' zIndex="-2" count="130" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
-	</script>
+	// <!-- 动态线条背景  启用需闭合
+	//  <script type="text/javascript"
+	//  color="0,191,255" opacity='0.7' zIndex="-2" count="130" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+     <!-- 自定义鼠标 -->
+    <link rel="stylesheet" href="/css/mouse.css">
 	<!--浏览器搞笑标题-->
 	<script type="text/javascript" src="/js/Title.js"></script>
 	<!--单击显示文字-->
@@ -282,5 +315,8 @@
 
 
     
+    <!-- 流星背景 -->
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.js"></script>
 </body>
 </html>
