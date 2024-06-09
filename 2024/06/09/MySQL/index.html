@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>压缩包部署mysql | 云散·飞花</title>
+    <meta name="author" content="云散·飞花" />
+    <meta name="description" content="但行善举 莫问前程" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING······</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启 绝对不是网站的问题[确信]</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>云散·飞花</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-home fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/id-card">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;资料</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;存档</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;收藏</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;云散·飞花</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-home fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                    </div>
+                </a>
+                
+                <a href="/id-card">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">资料</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">存档</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">收藏</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>压缩包部署mysql</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/6/9
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                数据库
+            </a>
+        </span>
+        
+        
+
+		
+
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #ff7d73">
+                    功能
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/mysql/" style="color: #03a9f4">
+                    mysql
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><strong>压缩包部署MySQL：从基础到实践</strong></p>
+<span id="more"></span>
+
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><h3 id="关于安装包"><a href="#关于安装包" class="headerlink" title="关于安装包"></a>关于安装包</h3><p>在学习数据库的时候，需要安装mysql，但是mysql的安装包对于新手来说可能不是很友好，会有很多风险，包括但不限于</p>
+<ol>
+<li><strong>安装失败</strong> 还是比较常见的，不知道哪一个环节出现错误导致安装失败</li>
+<li><strong>文件残留</strong> 安装失败后会有文件残留 不仅对于强迫症来说很头疼 也会影响下次的安装</li>
+<li><strong>注册表残留</strong> 就算没能安装成功 注册表也会有残留 这也是再次尝试失败的原因</li>
+</ol>
+<p>因此我把目光瞄到了官网提供的压缩包上 就我使用到现在来说 压缩包部署的MySQL与安装包部署的并无区别 但是对文件有较强掌控欲的我来说 无疑是避免麻烦的最优解 <del>虽然我花了两天才把mysql装到我的电脑上</del></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
+<li><p>MySQL 压缩包形式 <a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">MySQL ：： 下载MySQL社区服务器（存档版本）</a>我自己在用的版本是8.0.36</p>
+</li>
+<li><p>以防万一 这里是windows系统的安装教程</p>
+</li>
+<li><p>解压压缩包至任意文件夹里 <strong>路径最好是全英文的</strong> </p>
+</li>
+<li><p>配置环境：设置&#x3D;&gt;系统&#x3D;&gt;系统信息&#x3D;&gt;高级系统设置&#x3D;&gt;环境变量&#x3D;&gt;系统变量&#x3D;&gt;新建</p>
+</li>
+</ol>
+<p>​			变量名 <code>MYSQL_HOME</code></p>
+<p>​			变量值 <code>压缩包所在的文件路径</code>		例 <code>D:\mysql-8.0.36-winx64</code></p>
+<p>​			在path中<strong>新建</strong>然后输入<code>%MYSQL_HOME%\bin</code></p>
+<h4 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h4><blockquote>
+<p>为什么要配置环境变量？ 在cmd中输入一个可执行程序的名字 Windows会先在环境变量中的<code>Path</code>所指的路径中寻找一遍 如果找到了就直接执行 没找到就在当前工作目录找 如果还没找到 就会报错 我们添加环境变量的目的就是能够在任意一个cmd中直接调用MySQL中的相关程序而不用总是修改工作目录 大大简化了操作   java 配置环境变量也是同理</p>
+</blockquote>
+<p>至此准备工作完毕</p>
+<h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><ol>
+<li>在mysql的根目录上新建<code>my.ini</code> 文件 右键笔记本打开写入</li>
+</ol>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token key attr-name">port</span> <span class="token punctuation">=</span> <span class="token value attr-value">3306</span>
+ 
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">mysqld</span><span class="token punctuation">]</span></span>
+<span class="token comment">#设置3306端口 按理说只要不冲突可以改一个自己喜欢的端口号</span>
+<span class="token key attr-name">port</span> <span class="token punctuation">=</span> <span class="token value attr-value">3306</span>
+<span class="token comment"># 设置mysql的安装目录 tips:这里的目录是你自己的安装目录</span>
+<span class="token key attr-name">basedir</span><span class="token punctuation">=</span><span class="token value attr-value">D:\你自己的目录\mysql-8.0.36-winx64</span>
+<span class="token comment"># 设置mysql数据库的数据的存放目录 tips:同上一条</span>
+<span class="token key attr-name">datadir</span><span class="token punctuation">=</span><span class="token value attr-value">D:\你自己的目录\mysql-8.0.36-winx64\data</span>
+<span class="token comment"># 允许最大连接数</span>
+<span class="token key attr-name">max_connections</span><span class="token punctuation">=</span><span class="token value attr-value">200</span>
+<span class="token comment"># 服务端使用的字符集默认为8比特编码的latin1字符集</span>
+<span class="token key attr-name">character-set-server</span><span class="token punctuation">=</span><span class="token value attr-value">utf8</span>
+<span class="token comment"># 创建新表时将使用的默认存储引擎</span>
+<span class="token key attr-name">default-storage-engine</span><span class="token punctuation">=</span><span class="token value attr-value">INNODB</span>
+<span class="token comment">#这个需要注意一下，不然报错</span>
+<span class="token comment">#其原因是从 5.6开始，timestamp 的默认行为已经是 deprecated 了。</span>
+<span class="token key attr-name">explicit_defaults_for_timestamp</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+ 
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">mysql</span><span class="token punctuation">]</span></span>
+<span class="token comment"># 设置mysql客户端默认字符集</span>
+<span class="token key attr-name">default-character-set</span><span class="token punctuation">=</span><span class="token value attr-value">utf8```</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这一步比较重要好好检查有没有<strong>配置错误</strong> 特别是<strong>路径</strong></p>
+<ol start="2">
+<li>win+r 	cmd	用<strong>管理员打开控制台</strong> 用cd指令切换到mysql的根目录 [环境配置好的话可以不用cd]</li>
+</ol>
+<ul>
+<li><p><code>mysqld --initialize-insecure</code> 	初始化data目录 此时根目录会生成data文件没有的话检查配置文件</p>
+</li>
+<li><p>执行<code>mysqld --install </code>命令 [后面可以跟自定义名字 默认为mysql] 安装mysqld服务</p>
+</li>
+<li><p>执行命令 <code>net start mysql</code>  [服务名]  启动服务   (停止服务<code>net stop mysql</code> [服务名]) 在任务管理器里打开也行</p>
+</li>
+<li><p>初始化 MySQL 数据目录 <code>mysqld --initialize --user=mysql --console</code> </p>
+</li>
+<li><p>最后root@localhost 后面是临时密码</p>
+</li>
+<li><p>执行 <code>mysql -uroot -p</code> 回车后输入临时密码 注意不能复制 注意大小写</p>
+</li>
+<li><p>如果看到 welcome to the mysql 与 server version + 版本号 就表明成功了</p>
+</li>
+<li><p>更改密码<code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;新密码&#39;;</code></p>
+</li>
+</ul>
+<p>​			<img src="/../images/07.png" alt="操作图" title="操作图"/></p>
+<p>至此在没报错的前提下 mysql就已经部署完成了</p>
+<h2 id="测试与验证"><a href="#测试与验证" class="headerlink" title="测试与验证"></a>测试与验证</h2><p>到了这一步终于可以来好好的把玩一下这个数据库了 这里提供一些代码供大家操作mysql</p>
+<p>​	首先还是建议大家用图形化操纵工具<a target="_blank" rel="noopener" href="https://navicat.com.cn/">Navicat</a>来使用数据库 控制台也可以临时凑和</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">-- 开启mysql服务 任务管理器打开也行
+net start mysql  [服务名]
+-- 登入数据库
+mysql -uroot -p 输入密码  [密码在命令里输在回车后输都行]
+-- 创建数据库
+create DATABASE mydb1;
+-- 如果有该数据库 则跳过没有则创建
+create database if not exists mydb1;
+-- 选择使用哪一个数据库
+use mydb1;
+-- 创建表
+-- 选择mydb1
+-- 创建表格式
+use mydb1;
+create table 表名(name VARCHAR(50) NOT NULL);
+-- 插入数据
+insert into 表名 (name) values(名字);
+-- 查询数据库
+select * from 表名 查询数据
+-- 删除数据库
+drop database students;
+-- 如果有该数据库则删除没有则跳过
+drop database if exists mydb1;
+-- 查看表结构
+desc 表名;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果上述命令出错请检查代码有没有写错 或者找其他的命令来试一试</p>
+<h2 id="卸载MySQL"><a href="#卸载MySQL" class="headerlink" title="卸载MySQL"></a>卸载MySQL</h2><p>如果出现使用时版本过高[过低]想要降级[升级] 想要卸载 MySQL  本站自然提供一条龙服务</p>
+<ul>
+<li>此时压缩包部署MySQL的好处就会浮现出来 比如没有注册表残留 压根不会有残留文件</li>
+</ul>
+<ol>
+<li>停止mysql服务 使用 <code>net stop mysql</code>[服务名] 命令停止服务或者用任务管理器停止</li>
+<li><code>mysqld -remove mysql</code> [服务名]卸载mysql服务</li>
+<li>删除环境变量与mysql文件</li>
+</ol>
+<p>至此mysql已经彻底从你的电脑里移除了</p>
+<h2 id="常见问题与解决方案"><a href="#常见问题与解决方案" class="headerlink" title="常见问题与解决方案"></a>常见问题与解决方案</h2><ol>
+<li>在控制台输入命令时报错：有些命令需要管理员权限 例如打开关闭mysql服务 检查代码有没有输错 例如mysqld这样的命令</li>
+<li>输入临时密码时报错：这个问题有点玄学 注意大小写以及特殊符号 多试几次 实在输不对可以卸载当前服务重新创建一个新的 临时密码会刷新</li>
+<li>cmd输入mysql显示不是内部或外部命令：环境变量的问题</li>
+<li>cmd输入mysql显示error：如果出现error的话检查有没有开启服务，然后要用mysql -root -p命令登入mysql</li>
+<li>data文件没有生成：检查my.ini里的路径有没有正确配置 代码里出现的汉字都是让你自行填入的</li>
+</ol>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>写这篇博客的原因主要是我后面需要帮别人装mysql时 找不到一个详细攻略干脆自己写了一个</p>
+<p>没办法 自己电脑装不上时做梦都在处理报错 装好时就把理论知识全部抛在脑后了</p>
+<p>​																							——云散·飞花</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024云散·飞花
+            <span id="footer-icon">
+                <i class="fa-regular fa-flag fa-flip"></i>
+            </span>
+            &commat;云散·飞花
+            <i class="fa-solid fa-fish fa-bounce"  style="color:#87BFF2;"></i> 
+        </div>
+        <div>
+            Based on the <a href="#">Hexo Engine</a></a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        
+              <!-- 建站时长 -->
+              <span id="sitetime"></span> <!--显示建站时间的地方放置此代码 可以加上其他代HTML代码加粗颜色等-->
+    <script language=javascript>
+        function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            var t1 = Date.UTC(2024,5,2,20,46,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="Luck-clouds 时光之河流淌了"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+</script>
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+	<!-- 动态线条背景  启用需闭合
+	//  <script type="text/javascript"
+	//  color="0,191,255" opacity='0.7' zIndex="-2" count="130" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+     <!-- 自定义鼠标 -->
+    <link rel="stylesheet" href="/css/mouse.css">
+	<!--浏览器搞笑标题-->
+	<script type="text/javascript" src="/js/Title.js"></script>
+	<!--单击显示文字-->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="/js/text.js"></script>
+	<!-- 雪花特效 -->
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/snow.js"></script>
+    
+    
+
+
+
+
+    
+    <!-- 流星背景 -->
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.js"></script>
+</body>
+</html>
