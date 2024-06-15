@@ -12,7 +12,9 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link rel="icon" href="/images/avatar.jpg" />
+    <!-- 网页图标 原与头像共 用 -->
+    <!-- <link rel="icon" href="/images/avatar.jpg" /> -->
+    <link rel="icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://s4.zstatic.net" />
 <script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -193,7 +195,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #ff7d73">
+                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #ffa2c4">
                     功能
                 </a>
             </span>
@@ -261,11 +263,11 @@
  
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">mysql</span><span class="token punctuation">]</span></span>
 <span class="token comment"># 设置mysql客户端默认字符集</span>
-<span class="token key attr-name">default-character-set</span><span class="token punctuation">=</span><span class="token value attr-value">utf8```</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token key attr-name">default-character-set</span><span class="token punctuation">=</span><span class="token value attr-value">utf8</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这一步比较重要好好检查有没有<strong>配置错误</strong> 特别是<strong>路径</strong></p>
 <ol start="2">
-<li>win+r 	cmd	用<strong>管理员打开控制台</strong> 用cd指令切换到mysql的根目录 [环境配置好的话可以不用cd]</li>
+<li>win+r 	cmd	用<strong>管理员打开控制台</strong> 用cd指令切换到mysql的根目录</li>
 </ol>
 <ul>
 <li><p><code>mysqld --initialize-insecure</code> 	初始化data目录 此时根目录会生成data文件没有的话检查配置文件</p>
@@ -315,7 +317,17 @@ drop database if exists mydb1;
 -- 查看表结构
 desc 表名;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>以下是我自用的cmd脚本用于方便使用数据库的 前提是启动类型是手动 自动的话随意</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">启动服务 net start mysql   [服务名] 需要管理员权限
+关闭服务 net stop mysql    [服务名] 需要管理员权限
+登入数据库 mysql -uroot -p + 密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <p>如果上述命令出错请检查代码有没有写错 或者找其他的命令来试一试</p>
+<p>至此 在出现理想效果的情况下 你的数据库已经完美部署与使用了</p>
 <h2 id="卸载MySQL"><a href="#卸载MySQL" class="headerlink" title="卸载MySQL"></a>卸载MySQL</h2><p>如果出现使用时版本过高[过低]想要降级[升级] 想要卸载 MySQL  本站自然提供一条龙服务</p>
 <ul>
 <li>此时压缩包部署MySQL的好处就会浮现出来 比如没有注册表残留 压根不会有残留文件</li>
@@ -330,12 +342,11 @@ desc 表名;<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 <li>在控制台输入命令时报错：有些命令需要管理员权限 例如打开关闭mysql服务 检查代码有没有输错 例如mysqld这样的命令</li>
 <li>输入临时密码时报错：这个问题有点玄学 注意大小写以及特殊符号 多试几次 实在输不对可以卸载当前服务重新创建一个新的 临时密码会刷新</li>
 <li>cmd输入mysql显示不是内部或外部命令：环境变量的问题</li>
-<li>cmd输入mysql显示error：如果出现error的话检查有没有开启服务，然后要用mysql -root -p命令登入mysql</li>
+<li>cmd输入mysql显示error：如果出现error的话检查有没有开启服务，然后要用mysql -uroot -p命令登入mysql</li>
 <li>data文件没有生成：检查my.ini里的路径有没有正确配置 代码里出现的汉字都是让你自行填入的</li>
 </ol>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>写这篇博客的原因主要是我后面需要帮别人装mysql时 找不到一个详细攻略干脆自己写了一个</p>
-<p>没办法 自己电脑装不上时做梦都在处理报错 装好时就把理论知识全部抛在脑后了</p>
-<p>​																							——云散·飞花</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>写这篇博客的原因主要是我后面需要帮别人装mysql时 找不到一个详细攻略 干脆自己写了一个<del>其实是怕自己之后忘了怎么装 特地写的</del></p>
+<p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　——云散·飞花</p>
 
     </div>
     

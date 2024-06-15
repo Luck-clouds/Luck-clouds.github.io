@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>java环境配置及常见错误分析 | 云散·飞花</title>
+    <meta name="author" content="云散·飞花" />
+    <meta name="description" content="但行善举 莫问前程" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <!-- 网页图标 原与头像共 用 -->
+    <!-- <link rel="icon" href="/images/avatar.jpg" /> -->
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING······</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启 绝对不是网站的问题[确信]</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>云散·飞花</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-home fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/id-card">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;资料</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;存档</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;收藏</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;云散·飞花</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-home fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                    </div>
+                </a>
+                
+                <a href="/id-card">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">资料</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">存档</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">收藏</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>java环境配置及常见错误分析</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/6/15
+        </span>
+        
+        <span class="category">
+            <a href="/categories/java/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                java
+            </a>
+        </span>
+        
+        
+
+		
+
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #03a9f4">
+                    功能
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/java/" style="color: #ffa2c4">
+                    java
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><strong>java环境配置及常见错误分析:从理论到实践踩坑</strong></p>
+<span id="more"></span>
+
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在学习<strong>java</strong>的过程中有一步是经常令人头痛的部分 那就是环境配置 尽管是学习与使用java的第一步 但是如果不细心的话 还是非常容易出错的</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">jdk-8u333-windows-x64.exe</a> 安装包一份 官网下载需要账号 可以在其他渠道获取 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/126MEWKIZBSf2-tdMo3pQIw?pwd=0721">网盘链接</a></p>
+</li>
+<li><p>虽然java8发行了很多年 但是仍是当下主流使用的java版本</p>
+</li>
+<li><p>虽然但是请在D盘某处新建一个名为 <code>java</code>的文件夹 而且确保里面是空的</p>
+</li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>为了防止不必要的错误 我特地把注意事项写在前面</p>
+<ul>
+<li><p>请注意 安装java的文件夹要为空 要不然会<strong>安装失败</strong> 以后也不要把任何东西放到$java$​​​的安装文件夹里面</p>
+</li>
+<li><p>java文件夹所处的文件路径最好是全英文 不然不知道会出什么错误 <del>因为我也没试过</del></p>
+</li>
+<li><p>现在启动我的世界好像最低都要用<code>java17</code>了 其实<code>java8</code>启动也不会有什么问题 无需担心所有的java都是这样配置的</p>
+</li>
+<li><p>如果因为任何原因要卸载<code>java</code> 得益于<code>java</code>卸载程序的完善 直接卸载<code>java</code>就可以了 不会有任何残留</p>
+</li>
+<li><p>不要直接删除java的文件夹 <em><strong>你删不干净的</strong></em>  <strong>不要直接删除文件夹</strong> <strong>不要直接删除文件夹</strong> <strong>不要直接删除文件夹</strong></p>
+</li>
+<li><p>请注意 安装<code>java</code>的文件夹要为空 要不然会<strong>安装失败</strong> 以后也不要把任何东西放到$java$​的安装文件夹里面</p>
+</li>
+<li><p>不要把任何文件塞到<code>java</code>的文件夹里 不要把任何文件塞到<code>java</code>的文件夹里 不要把任何文件塞到<code>java</code>的文件夹里</p>
+</li>
+</ul>
+<h2 id="安装与环境配置"><a href="#安装与环境配置" class="headerlink" title="安装与环境配置"></a>安装与环境配置</h2><ol>
+<li><p>启动java的安装程序 点击下一步后在右边更改安装路径 放到我们之前创建的 <code>java</code>文件夹里</p>
+</li>
+<li><p>下载过程中会弹出第二个窗口 把这个窗口的路径也放到 <code>java</code> 文件夹里</p>
+</li>
+<li><p>查看 <code>java</code> 文件夹 看看文件夹里是否有 <code>jdk1.8.0_333</code>与<code>jre1.8.0_333</code>两个文件 它们两个的区别一会再说</p>
+</li>
+<li><p>配置环境：设置&#x3D;&gt;系统&#x3D;&gt;系统信息&#x3D;&gt;高级系统设置&#x3D;&gt;环境变量&#x3D;&gt;系统变量&#x3D;&gt;新建</p>
+</li>
+</ol>
+<p>​				变量名 <code>JAVA_HOME</code></p>
+<p>​				变量值 <code>java所在的文件路径</code>		例 <code>D:\java\jdk1.8.0_333</code></p>
+<p>​				在path中<strong>新建</strong>然后输入<code>%JAVA_HOME%\bin</code>与<code>%JAVA_HOME%\jre\bin</code></p>
+<p>​				这里的<code>jre</code>是<code>java</code>的<strong>运行环境</strong></p>
+<ol start="5">
+<li>检查环境 <code>win + r</code> 输入 <code>cmd</code> 然后分别输入<code>java</code>与<code>javac</code> 如果输出配置信息 则环境配置成功  输入<code>java -verstion</code>查看版本</li>
+</ol>
+<p>至此 <code>java</code> 已经成功的安装到了你的电脑上</p>
+<h2 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h2><blockquote>
+<p>这里解释一下 jdk1.8.0与jre1.8.0的区别</p>
+<p>在找<code>java</code>的安装包时可能会找到jre1.8这样的安装包虽然也是java但是功能却不如jdk安装包的全面</p>
+<ul>
+<li><p>JDK8（Java Development Kit 8）是Java 8的开发工具包，它包含了JRE8中的所有内容，以及开发Java应用程序和applet所必需的编译器（如<code>javac</code>）、调试器和其他工具。JDK8主要用于Java程序的开发、编译和调试</p>
+</li>
+<li><p>JRE8（Java Runtime Environment 8）是Java 8的运行时环境，它提供了Java虚拟机（JVM）和Java的核心类库，用于运行Java应用程序和applet。JRE8不包含开发Java程序所需的编译器和调试器。</p>
+</li>
+</ul>
+<p>以上是安装包的区别 显然jdk1.8提供的要豪华一点 虽然我可能用不到 但是我不能没有</p>
+<p>这里是安装完成后文件夹的区别</p>
+<ul>
+<li><p>JDK (Java Development Kit)这是Java开发工具包，主要用于Java程序的开发。它包含了Java程序编译（javac）、运行（java）、调试（jdb）等所需的全部工具，以及Java虚拟机（JVM）和Java类库。JDK的安装包通常比JRE大，因为它包含了更多的文件和工具。</p>
+</li>
+<li><p>JRE (Java Runtime Environment)这是Java运行时环境，主要用于Java程序的运行。它包含了Java应用程序运行所需的所有组件，如Java虚拟机（JVM）、标准类库（lib）以及其他文件。JRE的安装包通常比JDK小，因为它只包含Java运行时所需的组件，不包含Java开发工具。</p>
+</li>
+</ul>
+<p>以及安装后各个文件的用处<del>虽然没什么用但是了解一下</del></p>
+<ul>
+<li><strong>JDK</strong>：其目录结构通常包括<code>bin</code>（包含编译、运行等工具的可执行文件）、<code>db</code>（包含Java DB数据库管理系统）、<code>include</code>（包含C语言的头文件）、<code>jre</code>（包含Java运行时环境）、<code>lib</code>（包含Java开发工具使用的归档文件）等文件夹</li>
+<li><strong>JRE</strong>：其目录结构通常较为简单，主要包括<code>bin</code>（包含Java虚拟机和其他执行Java程序所需的工具的可执行文件）、<code>lib</code>（包含Java类库和其他资源文件）等文件夹</li>
+</ul>
+</blockquote>
+<h2 id="常见错误分析及解决方法"><a href="#常见错误分析及解决方法" class="headerlink" title="常见错误分析及解决方法"></a>常见错误分析及解决方法</h2><p>虽然配置Java环境不难  但无可否认  它还是比较容易出错的  这一步骤常被视为入门的第一道难关  即使经验丰富的使用者也可能在更新或迁移环境时遭遇问题	下面请看常见错误及其解决方法：</p>
+<ul>
+<li><p>java 安装过程失败 : 检查指定文件夹是否为空 之前是否安装过相同版本 以及之前的相同版本删干净没</p>
+</li>
+<li><p>控制台输入<code>java</code>后没有任何输出但是不报错:这个问题也挺奇怪 但是既然是控制台 那就是环境变量的问题 </p>
+</li>
+<li><p>查看path中有没有<code>C:\Program Files (x86)\Common Files\Oracle\Java\javapath</code>的环境配置 这是java安装的时候自动配置的环境 给它删掉 问题就迎刃而解了</p>
+</li>
+<li><p>升级或降低版本后 在控制台输入 <code>java -verstion</code>查看java版本时仍是之前的版本 :先检查环境变量 看是否有之前版本的环境 然后检查现版本的环境是否正确配置 确认无误后在控制台输入 <code>java -verstion</code>检查版本</p>
+<ul>
+<li><p>如果仍是之前的版本打开命令提示符 并输入<code>where java</code>来查找Java的安装路径</p>
+<ol>
+<li><p>如果Java并未安装在C盘，但查询结果中有一条指向C盘的路径，请复制该路径</p>
+</li>
+<li><p>使用文件资源管理器导航到该路径所指向的文件夹 </p>
+</li>
+<li><p>若有进程占用该文件夹中的文件 请使用任务管理器结束关于java的进程</p>
+</li>
+<li><p>在确保没有进程占用后 你可以选择将整个文件夹删除 或者将其移动到D盘等其他位置</p>
+</li>
+<li><p>重新打开命令提示符并输入 <code>java -version</code> 来检查Java版本是否为新版本</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<img src = "/images/java.png" style="zoom:20%">
+
+
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+<li>这篇文章也是为我自己撰写的  旨在作为我个人学习和回顾的宝贵资源</li>
+<li>如果你不止于安装<code>java</code> 还想学习并编写<code>java</code>那我推荐<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/">IDEA</a>这个编译器</li>
+<li>也感谢我的师傅 :文心一言 提供的官方文档</li>
+</ol>
+<p>​	　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　——云散·飞花</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024云散·飞花
+            <span id="footer-icon">
+                <i class="fa-regular fa-flag fa-flip"></i>
+            </span>
+            &commat;云散·飞花
+            <i class="fa-solid fa-fish fa-bounce"  style="color:#87BFF2;"></i> 
+        </div>
+        <div>
+            Based on the <a href="#">Hexo Engine</a></a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        
+              <!-- 建站时长 -->
+              <span id="sitetime"></span> <!--显示建站时间的地方放置此代码 可以加上其他代HTML代码加粗颜色等-->
+    <script language=javascript>
+        function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            var t1 = Date.UTC(2024,5,2,20,46,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="Luck-clouds 时光之河流淌了"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+</script>
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+	<!-- 动态线条背景  启用需闭合
+	//  <script type="text/javascript"
+	//  color="0,191,255" opacity='0.7' zIndex="-2" count="130" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+     <!-- 自定义鼠标 -->
+    <link rel="stylesheet" href="/css/mouse.css">
+	<!--浏览器搞笑标题-->
+	<script type="text/javascript" src="/js/Title.js"></script>
+	<!--单击显示文字-->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="/js/text.js"></script>
+	<!-- 雪花特效 -->
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/snow.js"></script>
+    
+    
+
+
+
+
+    
+    <!-- 流星背景 -->
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.js"></script>
+</body>
+</html>
