@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Tags: mysql | 云散·飞花</title>
+    <title> | 云散·飞花</title>
     <meta name="author" content="云散·飞花" />
     <meta name="description" content="但行善举 莫问前程" />
     <meta name="keywords" content="" />
@@ -45,6 +45,10 @@
 
 
 <script src="/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -158,114 +162,47 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        
-        <span>
-            <a href="/tags/%E5%8A%9F%E8%83%BD/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                功能
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/java/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                java
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/mysql/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                mysql
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/tags/%E5%BC%80%E5%BF%83/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                开心
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/%E4%BA%91/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                云
-            </a>
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/7/11
         </span>
         
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2024/6/9</div>
-            <a href="/2024/06/09/mysql/">
-                <h3>压缩包部署mysql</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        数据库
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #00bcd4">
-                            功能
-                        </a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/mysql/" style="color: #03a9f4">
-                            mysql
-                        </a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1 id="临时更改默认下载路径"><a href="#临时更改默认下载路径" class="headerlink" title="临时更改默认下载路径"></a>临时更改默认下载路径</h1><p>许多软件默认将其安装或下载内容存储在<code>C:\Program Files</code>目录下 尽管这一设置对于大多数软件而言是可配置的 允许用户根据个人偏好或系统需求进行调整 但是是有小部分软件是不可以更改 限制用户更改默认下载路径的  所以我们需要临时更改默认下载路径</p>
+<h2 id="注册表"><a href="#注册表" class="headerlink" title="注册表"></a>注册表</h2><p>一般这种东西都在注册表里</p>
+<p><strong>注册表打开</strong></p>
+<ol>
+<li><p>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion</p>
+<p><strong>找到这个</strong></p>
+</li>
+<li><p>ProgramFilesDir</p>
+<p><strong>或者这个</strong></p>
+</li>
+<li><p>ProgramFilesDir (x86)</p>
+<p><strong>这是默认的路径[前后没有空格]</strong></p>
+</li>
+<li><p>C:\Program Files</p>
+</li>
+</ol>
+<p>可以在<code>ProgramFilesDir</code>或<code>ProgramFilesDir (x86)</code>的值中改变你想要的路径 但是别忘了修改回来 因为不知道会出什么错误</p>
+
     </div>
+    
+    
+    
+    
+    
+    
     
 </div>
 
@@ -342,6 +279,12 @@
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/snow.js"></script>
+    
+    
+
+
+
+
     
     <!-- 流星背景 -->
     <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
