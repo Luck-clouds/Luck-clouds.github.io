@@ -7,6 +7,7 @@
          document.title = '-(◞‸◟)-别走~';
          clearTimeout(titleTime);
      }
+     
      else {
          $('[rel="icon"]').attr('href', "/img/trhx2.png");
          document.title = '(,,・ω・,,)' + OriginTitle;

@@ -195,14 +195,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #00bcd4">
+                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #ff7d73">
                     功能
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/mysql/" style="color: #00a596">
+                <a href="/tags/mysql/" style="color: #03a9f4">
                     mysql
                 </a>
             </span>
@@ -274,11 +274,11 @@
 </li>
 <li><p>执行<code>mysqld --install </code>命令 [后面可以跟自定义名字 默认为mysql] 安装mysqld服务</p>
 </li>
-<li><p>执行命令 <code>net start mysql</code>  [服务名]  启动服务   (停止服务<code>net stop mysql</code> [服务名]) 在任务管理器里打开也行</p>
-</li>
 <li><p>初始化 MySQL 数据目录 <code>mysqld --initialize --user=mysql --console</code> </p>
 </li>
-<li><p>最后root@localhost 后面是临时密码</p>
+<li><p>最后&#96;&#96;root@localhost &#96;后面是临时密码</p>
+</li>
+<li><p>执行命令 <code>net start mysql</code>  [服务名]  启动服务   (停止服务<code>net stop mysql</code> [服务名]) 在任务管理器里打开也行</p>
 </li>
 <li><p>执行 <code>mysql -uroot -p</code> 回车后输入临时密码 注意不能复制 注意大小写</p>
 </li>
@@ -334,7 +334,7 @@ desc 表名;<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 </ul>
 <ol>
 <li>停止mysql服务 使用 <code>net stop mysql</code>[服务名] 命令停止服务或者用任务管理器停止</li>
-<li><code>mysqld -remove mysql</code> [服务名]卸载mysql服务</li>
+<li><code>mysqld -remove</code> [服务名]卸载mysql服务</li>
 <li>删除环境变量与mysql文件</li>
 </ol>
 <p>至此mysql已经彻底从你的电脑里移除了</p>
@@ -344,6 +344,7 @@ desc 表名;<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 <li>cmd输入mysql显示不是内部或外部命令：环境变量的问题</li>
 <li>cmd输入mysql显示error：如果出现error的话检查有没有开启服务，然后要用mysql -uroot -p命令登入mysql</li>
 <li>data文件没有生成：检查my.ini里的路径有没有正确配置 代码里出现的汉字都是让你自行填入的</li>
+<li>如果mysql服务打不开或者打开一会自动停止 那么看一下是不是先初始化mysql服务再启用的服务</li>
 </ol>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>写这篇博客的原因主要是我后面需要帮别人装mysql时 找不到一个详细攻略 干脆自己写了一个<del>其实是怕自己之后忘了怎么装 特地写的</del></p>
 <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　——云散·飞花</p>
