@@ -202,7 +202,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/inf/" style="color: #00a596">
+                <a href="/tags/inf/" style="color: #03a9f4">
                     inf
                 </a>
             </span>
@@ -245,8 +245,180 @@ icon&#x3D;favicon.ico<span aria-hidden="true" class="line-numbers-rows"><span></
 <li><code>icon=favicon.ico</code>：这条指令告诉Windows使用根目录下的 <code>favicon.ico</code> 文件作为U盘的图标。<code>favicon.ico</code> 必须是一个有效的ICO格式图标文件，并且需要放置在U盘的根目录下。</li>
 </ul>
 </blockquote>
-<h3 id="其二"><a href="#其二" class="headerlink" title="其二"></a><strong>其二</strong></h3><h4 id="安装鼠标皮肤"><a href="#安装鼠标皮肤" class="headerlink" title="安装鼠标皮肤"></a>安装鼠标皮肤</h4><p><strong>鸽了喵</strong></p>
-<p><strong>下次有时间再写喵</strong></p>
+<h3 id="其二"><a href="#其二" class="headerlink" title="其二"></a><strong>其二</strong></h3><h4 id="安装自定义鼠标皮肤"><a href="#安装自定义鼠标皮肤" class="headerlink" title="安装自定义鼠标皮肤"></a>安装自定义鼠标皮肤</h4><ul>
+<li>通常你需要有15个鼠标样式皮肤 分别对应不同场景</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">鼠标样式</th>
+<th align="center">English</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>正常选择&#x2F;默认</strong></td>
+<td align="center">pointer</td>
+</tr>
+<tr>
+<td align="center"><strong>帮助选择</strong></td>
+<td align="center">help</td>
+</tr>
+<tr>
+<td align="center"><strong>后台运行</strong></td>
+<td align="center">work</td>
+</tr>
+<tr>
+<td align="center"><strong>忙</strong></td>
+<td align="center">busy</td>
+</tr>
+<tr>
+<td align="center"><strong>精确选择</strong></td>
+<td align="center">cross</td>
+</tr>
+<tr>
+<td align="center"><strong>文本选择</strong></td>
+<td align="center">text</td>
+</tr>
+<tr>
+<td align="center"><strong>书写</strong></td>
+<td align="center">hand</td>
+</tr>
+<tr>
+<td align="center"><strong>不可用</strong></td>
+<td align="center">unavailable</td>
+</tr>
+<tr>
+<td align="center"><strong>垂直调整</strong></td>
+<td align="center">vert</td>
+</tr>
+<tr>
+<td align="center"><strong>水平调整</strong></td>
+<td align="center">horz</td>
+</tr>
+<tr>
+<td align="center"><strong>沿对角线调整</strong></td>
+<td align="center">dgn1</td>
+</tr>
+<tr>
+<td align="center"><strong>移动</strong></td>
+<td align="center">move</td>
+</tr>
+<tr>
+<td align="center"><strong>候选</strong></td>
+<td align="center">alternate</td>
+</tr>
+<tr>
+<td align="center"><strong>链接选择</strong></td>
+<td align="center">link</td>
+</tr>
+</tbody></table>
+<ul>
+<li>一般来说inf安装文件应当是这样的</li>
+</ul>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Version</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">signature</span><span class="token punctuation">=</span><span class="token value attr-value">"<span class="token inner-value">$CHICAGO$</span>"</span>
+//文件版本声明
+//表示该INF文件兼容Windows 95及后续系统（"Chicago"是Windows 95开发代号）
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">DefaultInstall</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">CopyFiles</span> <span class="token punctuation">=</span> <span class="token value attr-value">Scheme.Cur</span>
+<span class="token key attr-name">AddReg</span> <span class="token punctuation">=</span> <span class="token value attr-value">Scheme.Reg,Wreg</span>
+//默认安装配置
+//定义安装时执行的两个操作：文件复制和注册表修改
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">DestinationDirs</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">Scheme.Cur</span> <span class="token punctuation">=</span> <span class="token value attr-value">10,"%CUR_DIR%"</span>
+//目标目录设置
+//10表示系统目录（通常是C:\Windows\System32）
+%CUR_DIR%最终解析为Cursors\firefiy，即光标文件将被复制到：C:\Windows\System32\Cursors\firefiy
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Scheme.Reg</span><span class="token punctuation">]</span></span>
+HKCU,"Control Panel\Cursors\Schemes","%SCHEME_NAME%",,"%10%\%CUR_DIR%\%pointer%,%10%\%CUR_DIR%\%help%,%10%\%CUR_DIR%\%work%,%10%\%CUR_DIR%\%busy%,%10%\%CUR_DIR%\%Cross%,%10%\%CUR_DIR%\%Text%,%10%\%CUR_DIR%\%Hand%,%10%\%CUR_DIR%\%Unavailiable%,%10%\%CUR_DIR%\%Vert%,%10%\%CUR_DIR%\%Horz%,%10%\%CUR_DIR%\%Dgn1%,%10%\%CUR_DIR%\%Dgn2%,%10%\%CUR_DIR%\%move%,%10%\%CUR_DIR%\%alternate%,%10%\%CUR_DIR%\%link%"
+//光标方案及注册表配置
+//在HKEY_CURRENT_USER\Control //Panel\Cursors\Schemes下创建新方案
+//定义各个光标状态对应的动画文件路径：
+//普通指针：Arrow.ani
+//帮助选择：help.ani
+//后台运行：AppStarting.ani
+//忙碌状态：Wait.ani 等
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Wreg</span><span class="token punctuation">]</span></span>
+HKCU,"Control Panel\Cursors",,0x00020000,"%SCHEME_NAME%"
+HKCU,"Control Panel\Cursors",AppStarting,0x00020000,"%10%\%CUR_DIR%\%work%"
+HKCU,"Control Panel\Cursors",Arrow,0x00020000,"%10%\%CUR_DIR%\%pointer%"
+HKCU,"Control Panel\Cursors",Crosshair,0x00020000,"%10%\%CUR_DIR%\%Cross%"
+HKCU,"Control Panel\Cursors",Hand,0x00020000,"%10%\%CUR_DIR%\%link%"
+HKCU,"Control Panel\Cursors",Help,0x00020000,"%10%\%CUR_DIR%\%Help%"
+HKCU,"Control Panel\Cursors",IBeam,0x00020000,"%10%\%CUR_DIR%\%Text%"
+HKCU,"Control Panel\Cursors",No,0x00020000,"%10%\%CUR_DIR%\%Unavailiable%"
+HKCU,"Control Panel\Cursors",NWPen,0x00020000,"%10%\%CUR_DIR%\%Hand%"
+HKCU,"Control Panel\Cursors",SizeAll,0x00020000,"%10%\%CUR_DIR%\%move%"
+HKCU,"Control Panel\Cursors",SizeNESW,0x00020000,"%10%\%CUR_DIR%\%Dgn2%"
+HKCU,"Control Panel\Cursors",SizeNS,0x00020000,"%10%\%CUR_DIR%\%Vert%"
+HKCU,"Control Panel\Cursors",SizeNWSE,0x00020000,"%10%\%CUR_DIR%\%Dgn1%"
+HKCU,"Control Panel\Cursors",SizeWE,0x00020000,"%10%\%CUR_DIR%\%Horz%"
+HKCU,"Control Panel\Cursors",UpArrow,0x00020000,"%10%\%CUR_DIR%\%alternate%"
+HKCU,"Control Panel\Cursors",Wait,0x00020000,"%10%\%CUR_DIR%\%busy%"
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Runonce\Setup\","",,"rundll32.exe shell32.dll,Control_RunDLL main.cpl @0,1"
+//0x00020000表示REG_EXPAND_SZ类型（带环境变量的字符串）
+//为每个光标状态指定具体文件路径：
+//箭头：Arrow.ani
+//手型：Hand.ani
+//文本输入：IBeam.ani
+//禁止状态：no.ani 等
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Scheme.Cur</span><span class="token punctuation">]</span></span>
+"Arrow.ani"
+"help.ani"
+"AppStarting.ani"
+"Wait.ani"
+"Cross.ani"
+"IBeam.ani"
+"Handwriting.ani"
+"no.ani"
+"SizeNS.ani"
+"SizeWE.ani"
+"SizeNWSE.ani"
+"SizeNESW.ani"
+"Cross.ani"
+"UpArrow.ani"
+"Hand.ani"
+//需要复制的15个光标动画文件列表
+//这些文件需与INF文件位于同一目录
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Strings</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">CUR_DIR</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">Cursors\firefiy</span>"</span>
+<span class="token key attr-name">SCHEME_NAME</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">流萤酱</span>"</span>
+<span class="token key attr-name">pointer</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">Arrow.ani</span>"</span>
+<span class="token key attr-name">help</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">help.ani</span>"</span>
+<span class="token key attr-name">work</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">AppStarting.ani</span>"</span>
+<span class="token key attr-name">busy</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">Wait.ani</span>"</span>
+<span class="token key attr-name">cross</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">Cross.ani</span>"</span>
+<span class="token key attr-name">text</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">IBeam.ani</span>"</span>
+<span class="token key attr-name">hand</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">Handwriting.ani</span>"</span>
+<span class="token key attr-name">unavailiable</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">no.ani</span>"</span>
+<span class="token key attr-name">vert</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">SizeNS.ani</span>"</span>
+<span class="token key attr-name">horz</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">SizeWE.ani</span>"</span>
+<span class="token key attr-name">dgn1</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">SizeNWSE.ani</span>"</span>
+<span class="token key attr-name">dgn2</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">SizeNESW.ani</span>"</span>
+<span class="token key attr-name">move</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">Cross.ani</span>"</span>
+<span class="token key attr-name">alternate</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">UpArrow.ani</span>"</span>
+<span class="token key attr-name">link</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">Hand.ani</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ol>
+<li><p>当然 安装文件又长又麻烦修改也费事</p>
+</li>
+<li><p>有没有简单一点的方法呢</p>
+</li>
+<li><p>有的兄弟 有的</p>
+</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.downxia.com/downinfo/276714.html"><strong>鼠标指针安装文件生成器 V2.0</strong> </a></li>
+</ul>
+<p>以上只是本人对于inf文件的粗略见解</p>
 
     </div>
     

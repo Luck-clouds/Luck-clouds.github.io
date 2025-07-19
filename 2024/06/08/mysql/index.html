@@ -195,7 +195,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #00bcd4">
+                <a href="/tags/%E5%8A%9F%E8%83%BD/" style="color: #03a9f4">
                     功能
                 </a>
             </span>
@@ -270,13 +270,11 @@
 <li>win+r 	cmd	用<strong>管理员打开控制台</strong> 用cd指令切换到mysql的根目录</li>
 </ol>
 <ul>
-<li><p><code>mysqld --initialize-insecure</code> 	初始化data目录 此时根目录会生成data文件没有的话检查配置文件</p>
-</li>
 <li><p>执行<code>mysqld --install </code>命令 [后面可以跟自定义名字 默认为mysql] 安装mysqld服务</p>
 </li>
-<li><p>初始化 MySQL 数据目录 <code>mysqld --initialize --user=mysql --console</code> </p>
+<li><p>初始化 MySQL 数据目录 <code>mysqld --initialize --user=mysql --console</code> 此时会初始化数据库系统表 mysql目录会生成data文件夹 如果报错或没有生成请检查my.ini配置文件</p>
 </li>
-<li><p>最后&#96;&#96;root@localhost &#96;后面是临时密码</p>
+<li><p>最后<code>root@localhost </code>后面是临时密码</p>
 </li>
 <li><p>执行命令 <code>net start mysql</code>  [服务名]  启动服务   (停止服务<code>net stop mysql</code> [服务名]) 在任务管理器里打开也行</p>
 </li>
